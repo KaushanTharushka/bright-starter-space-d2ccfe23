@@ -58,7 +58,7 @@ const YouTubeLogo = () => (
 const stats = [
   { icon: <Users className="w-5 h-5" />, value: "2000+", label: "Students" },
   { icon: <Monitor className="w-5 h-5" />, value: "Live", label: "Classes" },
-  { icon: <Wifi className="w-5 h-5" />, value: "මුලු ලන්කාවටම", label: "Reach" },
+  { icon: <Wifi className="w-5 h-5" />, value: "මුලු ලෝකෙටම", label: "Reach" },
 ];
 
 const InstitutesSection = () => (
@@ -75,7 +75,7 @@ const InstitutesSection = () => (
       >
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-5">
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          Online & Island-wide
+          Online & world-wide
         </span>
         <h2
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground leading-tight"

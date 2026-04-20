@@ -49,7 +49,6 @@ const Index = () => {
         >
           <Navbar />
           <HeroSection />
-          <AboutTeacherSection />
           <PostSection />
           <AboutSection />
           <CourseTypesSection />
@@ -62,6 +61,8 @@ const Index = () => {
           <Suspense fallback={<SectionFallback />}>
             <ImageGallerySection />
           </Suspense>
+
+          <AboutTeacherSection />
 
           <Suspense fallback={<SectionFallback />}>
             <ReviewSection />

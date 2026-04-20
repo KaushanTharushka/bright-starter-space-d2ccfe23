@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import PostSection from "@/components/PostSection";
 import AboutSection from "@/components/AboutSection";
 import CourseTypesSection from "@/components/CourseTypesSection";
+import AboutTeacherSection from "@/components/AboutTeacherSection";
 import LoadingPage from "@/components/LoadingPage";
 
 // Lazy load non-critical components
@@ -48,6 +49,7 @@ const Index = () => {
         >
           <Navbar />
           <HeroSection />
+          <AboutTeacherSection />
           <PostSection />
           <AboutSection />
           <CourseTypesSection />

@@ -9,9 +9,6 @@ import g05 from "@/assets/gallery/g05.jpeg";
 import g06 from "@/assets/gallery/g06.jpeg";
 import g07 from "@/assets/gallery/g07.jpeg";
 import g08 from "@/assets/gallery/g08.jpeg";
-import g09 from "@/assets/gallery/g09.jpeg";
-import g10 from "@/assets/gallery/g10.jpeg";
-import g11 from "@/assets/gallery/g11.jpeg";
 
 const images: { src: string; alt: string; title: string }[] = [
   { src: g01, alt: "Phonetics class on the whiteboard", title: "Phonetics Class" },
@@ -22,9 +19,6 @@ const images: { src: string; alt: string; title: string }[] = [
   { src: g06, alt: "Lecture hall full of students", title: "Lecture Hall" },
   { src: g07, alt: "Free O/L batch session", title: "Free O/L Batch" },
   { src: g08, alt: "Vocabulary practice — kitchen items", title: "Vocabulary Practice" },
-  { src: g09, alt: "Student notes and study materials", title: "Study Materials" },
-  { src: g10, alt: "Packed classroom in session", title: "Packed Classroom" },
-  { src: g11, alt: "Eazy English moments", title: "Eazy English Moments" },
 ];
 
 const ImageGallerySection = () => {

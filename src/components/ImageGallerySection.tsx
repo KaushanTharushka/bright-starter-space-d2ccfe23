@@ -80,12 +80,9 @@ const ImageGallerySection = () => {
           </p>
         </motion.div>
 
-        {/* Tight responsive grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 sm:gap-1.5">
+        {/* Uniform responsive grid — clean rectangular block */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5">
           {images.map((img, i) => {
-            // Make some tiles larger for visual rhythm
-            const featured =
-              i === 0 ? "col-span-2 row-span-2" : i === 5 ? "sm:col-span-2" : "";
             return (
               <motion.button
                 key={i}
@@ -96,7 +93,7 @@ const ImageGallerySection = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: (i % 6) * 0.05 }}
                 aria-label={`Open ${img.title}`}
-                className={`group relative overflow-hidden aspect-square ${featured} focus:outline-none focus:ring-2 focus:ring-primary`}
+                className="group relative overflow-hidden aspect-square rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <img
                   src={img.src}

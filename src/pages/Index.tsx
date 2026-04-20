@@ -10,7 +10,7 @@ import LoadingPage from "@/components/LoadingPage";
 
 // Lazy load non-critical components
 const ImageGallerySection = lazy(() => import("@/components/ImageGallerySection"));
-const ReviewSection = lazy(() => import("@/components/ReviewSection"));
+
 const InstitutesSection = lazy(() => import("@/components/InstitutesSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
@@ -63,10 +63,6 @@ const Index = () => {
           </Suspense>
 
           <AboutTeacherSection />
-
-          <Suspense fallback={<SectionFallback />}>
-            <ReviewSection />
-          </Suspense>
 
           <Suspense fallback={null}>
             <Footer />

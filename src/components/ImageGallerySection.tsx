@@ -9,9 +9,6 @@ import g05 from "@/assets/gallery/g05.jpeg";
 import g06 from "@/assets/gallery/g06.jpeg";
 import g07 from "@/assets/gallery/g07.jpeg";
 import g08 from "@/assets/gallery/g08.jpeg";
-import g09 from "@/assets/gallery/g09.jpeg";
-import g10 from "@/assets/gallery/g10.jpeg";
-import g11 from "@/assets/gallery/g11.jpeg";
 
 const images: { src: string; alt: string; title: string }[] = [
   { src: g01, alt: "Phonetics class on the whiteboard", title: "Phonetics Class" },
@@ -22,9 +19,6 @@ const images: { src: string; alt: string; title: string }[] = [
   { src: g06, alt: "Lecture hall full of students", title: "Lecture Hall" },
   { src: g07, alt: "Free O/L batch session", title: "Free O/L Batch" },
   { src: g08, alt: "Vocabulary practice — kitchen items", title: "Vocabulary Practice" },
-  { src: g09, alt: "Student notes and study materials", title: "Study Materials" },
-  { src: g10, alt: "Packed classroom in session", title: "Packed Classroom" },
-  { src: g11, alt: "Eazy English moments", title: "Eazy English Moments" },
 ];
 
 const ImageGallerySection = () => {
@@ -86,12 +80,9 @@ const ImageGallerySection = () => {
           </p>
         </motion.div>
 
-        {/* Tight responsive grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 sm:gap-1.5">
+        {/* Uniform responsive grid — clean rectangular block */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5">
           {images.map((img, i) => {
-            // Make some tiles larger for visual rhythm
-            const featured =
-              i === 0 ? "col-span-2 row-span-2" : i === 5 ? "sm:col-span-2" : "";
             return (
               <motion.button
                 key={i}
@@ -102,7 +93,7 @@ const ImageGallerySection = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: (i % 6) * 0.05 }}
                 aria-label={`Open ${img.title}`}
-                className={`group relative overflow-hidden aspect-square ${featured} focus:outline-none focus:ring-2 focus:ring-primary`}
+                className="group relative overflow-hidden aspect-square rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <img
                   src={img.src}

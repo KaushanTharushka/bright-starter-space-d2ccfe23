@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:embed": "vite build --base=/landing-site/",
+    "build": "vite build --base=/",
+    "build:embed": "vite build --base=/",
+    "build:landing": "vite build --base=/landing/",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",

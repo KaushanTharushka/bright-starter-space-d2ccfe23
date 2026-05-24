@@ -48,33 +48,27 @@ const CurrentCoursesSection = () => {
     if (!openCourse) return;
     setIsSubmitting(true);
     try {
-      const res = await fetch("https://sheetdb.io/api/v1/bw2rywt0lxcfw", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          data: [
-            {
-              Course: openCourse.title,
-              Name: form.fullName,
-              Phone: form.phone,
-              Age: form.age,
-              Date: new Date().toLocaleDateString(),
-            },
-          ],
-        }),
-      });
-      if (!res.ok) {
-        const errorText = await res.text();
-        console.error("Enrollment submission failed:", res.status, errorText);
-        throw new Error("Request failed");
-      }
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwUsbrG9nLNxTXLkTSr_UGQ3erBxkt09kH5LLXZCQOfGGwDnfPFS2FKbkXan7CQ3Jd5hg/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify({
+            Course: openCourse.title,
+            Name: form.fullName,
+            Phone: form.phone,
+            Age: form.age,
+            Date: new Date().toLocaleDateString(),
+          }),
+        }
+      );
       toast.success("Success! We will contact you soon.");
       setForm({ fullName: "", phone: "", age: "" });
       setOpenCourse(null);
     } catch (err) {
+      console.error("Enrollment submission failed:", err);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);

@@ -50,18 +50,27 @@ const CurrentCoursesSection = () => {
     try {
       const res = await fetch("https://sheetdb.io/api/v1/bw2rywt0lxcfw", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          data: {
-            Course: openCourse.title,
-            Name: form.fullName,
-            Phone: form.phone,
-            Age: form.age,
-            Date: new Date().toLocaleDateString(),
-          },
+          data: [
+            {
+              Course: openCourse.title,
+              Name: form.fullName,
+              Phone: form.phone,
+              Age: form.age,
+              Date: new Date().toLocaleDateString(),
+            },
+          ],
         }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error("Enrollment submission failed:", res.status, errorText);
+        throw new Error("Request failed");
+      }
       toast.success("Success! We will contact you soon.");
       setForm({ fullName: "", phone: "", age: "" });
       setOpenCourse(null);

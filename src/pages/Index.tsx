@@ -6,6 +6,7 @@ import PostSection from "@/components/PostSection";
 import AboutSection from "@/components/AboutSection";
 import CourseTypesSection from "@/components/CourseTypesSection";
 import AboutTeacherSection from "@/components/AboutTeacherSection";
+import CurrentCoursesSection from "@/components/CurrentCoursesSection";
 import LoadingPage from "@/components/LoadingPage";
 
 // Lazy load non-critical components
@@ -52,6 +53,7 @@ const Index = () => {
           <PostSection />
           <AboutSection />
           <CourseTypesSection />
+          <CurrentCoursesSection />
 
           {/* Lazy loaded sections */}
           <Suspense fallback={<SectionFallback />}>

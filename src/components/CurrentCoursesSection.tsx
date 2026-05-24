@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { toast } from "@/hooks/use-toast";
-import { ImageIcon } from "lucide-react";
+import { toast } from "sonner";
+import { ImageIcon, Loader2 } from "lucide-react";
 
 interface Course {
   title: string;
@@ -41,15 +41,35 @@ const courses: Course[] = [
 const CurrentCoursesSection = () => {
   const [openCourse, setOpenCourse] = useState<Course | null>(null);
   const [form, setForm] = useState({ fullName: "", phone: "", age: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Application submitted",
-      description: `Thank you, ${form.fullName}. We'll contact you soon.`,
-    });
-    setForm({ fullName: "", phone: "", age: "" });
-    setOpenCourse(null);
+    if (!openCourse) return;
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("https://sheetdb.io/api/v1/bw2rywt0lxcfw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          data: {
+            Course: openCourse.title,
+            Name: form.fullName,
+            Phone: form.phone,
+            Age: form.age,
+            Date: new Date().toLocaleDateString(),
+          },
+        }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      toast.success("Success! We will contact you soon.");
+      setForm({ fullName: "", phone: "", age: "" });
+      setOpenCourse(null);
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -163,8 +183,15 @@ const CurrentCoursesSection = () => {
               />
             </div>
             <DialogFooter>
-              <Button type="submit" className="w-full">
-                Submit Application
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Application"
+                )}
               </Button>
             </DialogFooter>
           </form>
